@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robo-Golf | Befehlsketten-Optimierung</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">ROBO<span class="neon-text">-GOLF</span></div>
+            <div class="level-select">
+                <label>Level:</label>
+                <select id="levelSelect"></select>
+            </div>
+            <div class="stats">
+                <div class="stat-box" title="Anzahl der geschriebenen Code-Zeilen">Code Lines: <span id="currentScore">0</span></div>
+                <div class="stat-box best" title="Rekord für dieses Level">Best: <span id="highScore">-</span></div>
+                <button id="shareBtn" class="btn btn-secondary">Share 🔗</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="editor-panel">
+                <div class="panel-header">
+                    <h2>Mission Control</h2>
+                    <div class="actions">
+                        <button id="runBtn" class="btn btn-primary">▶ RUN</button>
+                        <button id="stopBtn" class="btn btn-danger" style="display:none;">⏹ STOP</button>
+                        <button id="resetBtn" class="btn btn-secondary">↺ RESET</button>
+                    </div>
+                </div>
+                <div class="editor-container visual-editor">
+                    <div class="toolbox">
+                        <button class="block-btn move-btn" onclick="addBlock('move')">🚶 Move</button>
+                        <button class="block-btn turn-btn" onclick="addBlock('turnRight')">↻ Turn Right</button>
+                        <button class="block-btn turn-btn" onclick="addBlock('turnLeft')">↺ Turn Left</button>
+                        <button class="block-btn loop-btn" onclick="addBlock('loop')">🔁 Loop</button>
+                    </div>
+                    <div class="program-area" id="programArea">
+                        <!-- Blocks will be added here -->
+                        <div class="empty-state">Klicke auf die Blöcke oben, um dein Programm zu bauen!</div>
+                    </div>
+                </div>
+                <div class="instruction-manual">
+                    <h3>Spielregeln</h3>
+                    <div class="manual-grid">
+                        <div class="cmd-item"><span>Gewinne den Highscore, indem du so <b>wenig Blöcke</b> wie möglich verwendest. Nutze Schleifen (Loops)!</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="game-panel">
+                <div class="panel-header">
+                    <h2>Simulation</h2>
+                    <div id="gameStatus" class="status-badge idle">READY</div>
+                </div>
+                <div class="board-container">
+                    <div id="gameBoard" class="game-board"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
